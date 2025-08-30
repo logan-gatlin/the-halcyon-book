@@ -1,0 +1,5 @@
+[book]
+authors = ["Logan Gatlin"]
+language = "en"
+src = "src"
+title = "The Halcyon Book"
