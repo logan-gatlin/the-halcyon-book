@@ -1,5 +1,5 @@
 # btree
-btree is a type that represents a binary tree. It contains a value (Node) and two children (Node or Nil).
+btree is a type that represents a binary tree. It is either a Node that contains a value (Node) and two children (Node or Nil), or it is Nil and contans no values.
 ```
 type t = fn I => Node of I * t * t | Nil of std:unit
 ```

@@ -1,5 +1,5 @@
 # list
-list is a type used to represent a linked list data structure.
+list is a type used to represent a linked list data structure. Every list is either Pair and contains two values (head, tail) or is Nil, and contains no values
 ```
 type t = fn I => Pair of I * (t I) | Nil of std:unit
 ```
