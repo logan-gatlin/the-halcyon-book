@@ -10,7 +10,7 @@ Constructor for a Some option.
 ```
 let my_some = opt:Some (12)
 ```
-### None: ()
+### None: std:unit -> (list '0)
 Constructor for a None option.
 #### Example
 ```

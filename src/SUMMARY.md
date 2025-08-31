@@ -3,6 +3,7 @@
 # Tutorial
 - [Chapter 1](./tutorial/chapter_1.md)
 # Documentation
+- [Conventions](./docs/conventions.md)
 - [std](./docs/std.md)
 - [list](./docs/list.md)
 - [opt](./docs/opt.md)
