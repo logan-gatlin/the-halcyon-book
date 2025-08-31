@@ -20,13 +20,13 @@ let my_none = opt:None ()
 Returns true if the passed option is Some, otherwise returns false.
 #### Example
 ```halcyon
-let value = opt:Some (12) |> is_some 
+let value = opt:Some (12) |> opt:is_some 
 (* value is true *)
 ```
 ### is_none: (opt:t '0) -> std:boolean
 Returns true if the passed option is None, otherwise false.
 ```halcyon
-let value = opt:None () |> is_none 
+let value = opt:None () |> opt:is_none 
 (* value is true *)
 ```
 ### unwrap: (opt:t '0) -> '0
