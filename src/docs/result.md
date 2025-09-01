@@ -36,7 +36,7 @@ else
 ### unwrap_ok: `(result '0 '1) -> '0`
 Returns the value contained in an Ok result.
 Panics if the result is Error.
-It is reccomended that you use pattern matching in most cases instead of this.
+It is recommended that you use pattern matching in most cases instead of this.
 #### Example
 ```halcyon
 let my_result = result:Ok ("Hatsune Miku")
@@ -47,7 +47,7 @@ let () = my_result |> result:unwrap_ok |> std:print_string
 ### unwrap_err: `(result '0 '1) -> '1`
 Returns the value contained in an Error result.
 Panics if the result is Ok.
-It is reccomended that you use pattern matching in most cases instead of this.
+It is recommended that you use pattern matching in most cases instead of this.
 #### Example
 ```halcyon
 let my_result = result:Error ("Kasane Teto")
