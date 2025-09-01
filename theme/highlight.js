@@ -54,11 +54,6 @@ hljs.registerLanguage("halcyon", function (hljs) {
       },
       // Numbers
       hljs.NUMBER_MODE,
-      // Variables that start with @
-      {
-        className: "variable",
-        begin: /@[a-zA-Z_]\w*/
-      },
        // --- Function definitions: let name = fn param1 param2 => ...
       {
         className: "function",
