@@ -1,11 +1,13 @@
 # btree
-btree is a type that represents a binary tree. Every btree is either a Node that contains a value and two children (Node or Nil), or it is Nil and contans no values.
+btree is a type that represents a binary tree.
+Every btree is either a Node that contains a value and two children (Node or Nil), or it is Nil and contans no values.
 ```
 type t = fn I => Node of I * t * t | Nil of std:unit
 ```
 ## Functions
 ### Nil: std:unit -> (btree '0)
-The constructor for a Nil btree. This is used to represent an empty child.
+The constructor for a Nil btree.
+This is used to represent an empty child.
 #### Example
 ```halcyon
 let my_empty_tree = btree:Nil()
@@ -21,7 +23,8 @@ let my_tree = btree:Node (1, btree:Nil(), btree:Nil())
 *)
 ```
 ### insert: '0 -> ('0 -> '0 -> std:boolean) -> (btree '0) -> (btree '0)
-Returns a copy of the passed tree with the passed value inserted according to the passed operation. `insert` checks if the function is true with the passed value and the current tree value, if it is, it will attempt to insert the passed value as the left child. Otherwise, it will attempt to insert the passed value as the right child. This process is repeateded recursively until a `Node` has a `Nil` child in the appropriate position.
+Returns a copy of the passed tree with the passed value inserted according to the passed operation.
+`insert` checks if the function is true with the passed value and the current tree value, if it is, it will attempt to insert the passed value as the left child. Otherwise, it will attempt to insert the passed value as the right child. This process is repeateded recursively until a `Node` has a `Nil` child in the appropriate position.
 #### Example
 ```halcyon
 let my_tree = btree:Node (5, btree:Nil(), btree:Nil())

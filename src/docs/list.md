@@ -1,11 +1,13 @@
 # list
-list is a type used to represent a linked list data structure. Every list is either Pair and contains two values (head, tail) or is Nil, and contains no values
+list is a type used to represent a linked list data structure.
+Every list is either Pair and contains two values (head, tail) or is Nil, and contains no values
 ```halcyon
 type t = fn I => Pair of I * (t I) | Nil of std:unit
 ```
 ## Functions
 ### Nil: std:unit -> (list:t '0)
-The constructor for an empty list item. This should only be located at the end of a list.
+The constructor for an empty list item.
+This should only be located at the end of a list.
 #### Example
 ```halcyon
 let my_empty_list = Nil ()

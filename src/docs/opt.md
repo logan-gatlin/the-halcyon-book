@@ -39,7 +39,8 @@ let other_value = opt:None () |> opt:unwrap
 (* panics *)
 ```
 ### map: ('0 -> '1) -> (opt:t '0) -> (opt:t '1)
-If the passed option is a Some, returns a copy of the passed option with the passed function applied to its value. Otherwise, returns None.
+If the passed option is a Some, returns a copy of the passed option with the passed function applied to its value.
+Otherwise, returns None.
 #### Example
 ```halcyon
 let my_opt = opt:Some (2)
@@ -47,7 +48,8 @@ let () = my_opt |> opt:map (fn a => a * 2) |> opt:unwrap |> string:from_integer 
 (* prints 4 *) 
 ```
 ### iterate: ('0 -> '1) -> (opt:t '0) -> std:unit
-If the passed option is a Some, runs passed function on the passed option, then returns unit. Otherwise, returns unit.
+If the passed option is a Some, runs passed function on the passed option, then returns unit.
+Otherwise, returns unit.
 #### Example
 ```halcyon
 let () = opt:Some ("Teto") |> opt:iterate std:print_string
