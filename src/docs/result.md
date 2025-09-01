@@ -17,7 +17,7 @@ let my_result = result:Ok (2)
 if result:is_ok my_result then
     std:print_string "Ok!"
 else
-    std:print_string "Error!
+    std:print_string "Error!"
 
 (* prints "Ok!" *)
 ```
@@ -29,7 +29,7 @@ let my_result = result:Error (2)
 if result:is_err my_result then
     std:print_string "Error!"
 else
-    std:print_string "Ok!
+    std:print_string "Ok!"
 
 (* prints "Error!" *)
 ```
