@@ -5,11 +5,11 @@ Every result is either an Ok or an Error, both of which contain a value.
 type result = fn a b => Ok of a | Error of b
 ```
 ## Functions
-### Ok: '0 -> (result '0 '1)
+### Ok: `'0 -> (result '0 '1)`
 Constructor for an Ok result.
-### Error: '1 -> (result '0 '1)
+### Error: `'1 -> (result '0 '1)`
 Constructor for an Error result.
-### is_ok: (result '0 '1) -> boolean
+### is_ok: `(result '0 '1) -> boolean`
 Returns true if the provided result is Ok, otherwise returns false.
 #### Example
 ```halcyon
@@ -21,7 +21,7 @@ else
 
 (* prints "Ok!" *)
 ```
-### is_err: (result '0 '1) -> boolean
+### is_err: `(result '0 '1) -> boolean`
 Returns true if the provided result is Error, otherwise returns false.
 #### Example 
 ```halcyon
@@ -33,7 +33,7 @@ else
 
 (* prints "Error!" *)
 ```
-### unwrap_ok: (result '0 '1) -> '0
+### unwrap_ok: `(result '0 '1) -> '0`
 Returns the value contained in an Ok result.
 Panics if the result is Error.
 It is reccomended that you use pattern matching in most cases instead of this.
@@ -44,7 +44,7 @@ let () = my_result |> result:unwrap_ok |> std:print_string
 
 (* prints "Hatsune Miku" *)
 ```
-### unwrap_err: (result '0 '1) -> '1
+### unwrap_err: `(result '0 '1) -> '1`
 Returns the value contained in an Error result.
 Panics if the result is Ok.
 It is reccomended that you use pattern matching in most cases instead of this.
@@ -55,7 +55,7 @@ let () = my_result |> result:unwrap_err |> std:print_string
 
 (* prints "Kasane Teto" *)
 ```
-### res_and: (result '0 '1) -> (result '0 '1) -> (result '0 '1)
+### res_and: `(result '0 '1) -> (result '0 '1) -> (result '0 '1)`
 If the first result passed is Ok, returns the second one.
 Otherwise, return the first result, which is an Error.
 #### Example
@@ -72,7 +72,7 @@ match new_result with
 | result:Error of b => std:print_string b
 (* prints "Kasane Teto" *)
 ```
-### expect: string -> (result '0 '1) -> '0
+### expect: `string -> (result '0 '1) -> '0`
 Returns the enclosed result value if the passed result is Ok.
 If the passed result is an Error, prints the passed string, then panics.
 #### Example
@@ -83,7 +83,7 @@ let () = result:Ok ("Akita Neru") |> result:expect ("Try doing it right next tim
 let () = result:Error ("Akita Neru") |> result:expect ("Try doing it right next time") |> std:print_string 
 (* prints "Try doing it right next time", then panics *)
 ```
-### res_or: (result '0 '1) -> (result '0 '1) -> (result '0 '1)
+### res_or: `(result '0 '1) -> (result '0 '1) -> (result '0 '1)`
 Returns the first passed result if it is Ok, otherwise returns the second passed result.
 #### Example
 ```halcyon
@@ -96,7 +96,7 @@ let () = result:Error ("Akita Neru") |> result:res_or Error ("Kasane Teto") |> r
 let () = result:Error ("Akita Neru") |> result:res_or Ok ("Kasane Teto") |> result:unwrap_ok |> std:print_string 
 (* prints "Kasane Teto" *)
 ```
-### unwrap_or: (result '0 '1) -> '0 -> '0
+### unwrap_or: `(result '0 '1) -> '0 -> '0`
 Returns the value enclosed in the first passed result if its Ok, otherwise return the second passed value.
 #### Example
 ```halcyon
@@ -106,7 +106,7 @@ let () = result:Ok ("Hatsune Miku") |> result:unwrap_or "Kasane Teto" |> std:pri
 let () = result:Error ("Hatsune Miku") |> result:unwrap_or "Kasane Teto" |> std:print_string 
 (* prints "Kasane Teto" *)
 ```
-### and_then: (result '0 '1) -> ('0 -> '1) -> (result '0 '1)
+### and_then: `(result '0 '1) -> ('0 -> '1) -> (result '0 '1)`
 If the passed result is Ok, returns a new result with an enclosed value equal to the passed result's enclosed value with the passed function appplied to it.
 Otherwise, returns the passed Error.
 #### Example

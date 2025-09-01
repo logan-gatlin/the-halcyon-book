@@ -37,7 +37,6 @@ There are a number of supported escape sequences.
 "🤓☝️" (* valid *)
 "I love Halcyon\n It is awesome" (* valid *)
 "I hate Halcyon\e It is not awesome" (* invalid *)
-
 ```
 ### glyph
 The character type.
