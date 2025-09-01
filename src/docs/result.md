@@ -51,7 +51,7 @@ It is reccomended that you use pattern matching in most cases instead of this.
 #### Example
 ```halcyon
 let my_result = result:Error ("Kasane Teto")
-let () = my_result |> result:unwrap_error |> std:print_string
+let () = my_result |> result:unwrap_err |> std:print_string
 
 (* prints "Kasane Teto" *)
 ```
@@ -60,7 +60,7 @@ If the first result passed is Ok, returns the second one.
 Otherwise, return the first result, which is an Error.
 #### Example
 ```halcyon
-let my_result = result:Ok ("Akita Neru") |> res_and Error("Hatsune Miku") 
+let my_result = result:Ok ("Akita Neru") |> resukt:res_and Error("Hatsune Miku") 
 match my_result with
 | result:Ok of a => std:print_string a
 | result:Error of b => std:print_string b
@@ -81,7 +81,7 @@ let () = result:Ok ("Akita Neru") |> result:expect ("Try doing it right next tim
 (* prints "Akita Neru" *)
 
 let () = result:Error ("Akita Neru") |> result:expect ("Try doing it right next time") |> std:print_string 
-(* prints "Try doing it right next time", then panics*)
+(* prints "Try doing it right next time", then panics *)
 ```
 ### res_or: (result '0 '1) -> (result '0 '1) -> (result '0 '1)
 Returns the first passed result if it is Ok, otherwise returns the second passed result.
