@@ -10,7 +10,7 @@ Constructor for an Ok result.
 ### Error: `'1 -> (result '0 '1)`
 Constructor for an Error result.
 ### is_ok: `(result '0 '1) -> boolean`
-Returns true if the provided result is Ok, otherwise returns false.
+Returns true if the passed result is Ok, otherwise returns false.
 #### Example
 ```halcyon
 let my_result = result:Ok (2)
@@ -22,7 +22,7 @@ else
 (* prints "Ok!" *)
 ```
 ### is_err: `(result '0 '1) -> boolean`
-Returns true if the provided result is Error, otherwise returns false.
+Returns true if the passed result is Error, otherwise returns false.
 #### Example 
 ```halcyon
 let my_result = result:Error (2)
@@ -34,7 +34,7 @@ else
 (* prints "Error!" *)
 ```
 ### unwrap_ok: `(result '0 '1) -> '0`
-Returns the value contained in an Ok result.
+Returns the value contained in the passed Ok result.
 Panics if the result is Error.
 It is recommended that you use pattern matching in most cases instead of this.
 #### Example
@@ -45,7 +45,7 @@ let () = my_result |> result:unwrap_ok |> std:print_string
 (* prints "Hatsune Miku" *)
 ```
 ### unwrap_err: `(result '0 '1) -> '1`
-Returns the value contained in an Error result.
+Returns the value contained in the passed Error result.
 Panics if the result is Ok.
 It is recommended that you use pattern matching in most cases instead of this.
 #### Example

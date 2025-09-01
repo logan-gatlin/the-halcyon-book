@@ -30,7 +30,7 @@ let value = opt:None () |> opt:is_none
 (* value is true *)
 ```
 ### unwrap: `(opt:t '0) -> '0`
-If the passed option is a some, returns the enclosed value, otherwise panics.
+If the passed option is a Some, returns the enclosed value, otherwise panics.
 #### Example
 ```halcyon
 let value = opt:Some (12) |> opt:unwrap

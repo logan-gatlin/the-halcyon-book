@@ -53,7 +53,7 @@ let () = string:from_int length |> std:print_string
 (* prints 2 *)
 ```
 ### nth: `std:integer -> (list '0) -> '0`
-Returns the value of the list item at the position of the passed index.
+Returns the value of the passed list item at the position of the passed index.
 #### Example
 ```halcyon
 let my_list = list:Nil ()|> list:push "one" |> list:push "two" |> list:push "three"
@@ -61,7 +61,7 @@ let () = list:nth 2 my_list |> std:print_string
 (* prints "two" *)
 ```
 ### concatenate: `(list '0) -> (list '0) -> (list '0)`
-Add the second list to the end of the first list.
+Adds the second passed list to the end of the first passed list.
 #### Example
 ```halcyon
 let my_list = list:Nil ()|> list:push "one" |> list:push "two" 
