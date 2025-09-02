@@ -9,7 +9,7 @@ hljs.registerLanguage("halcyon", function (hljs) {
     name: "Halcyon",
     case_insensitive: false, // language is case-sensitive
     keywords: {
-      keyword: "if let match then else fn type of in",
+      keyword: "if let match with module end then else fn type of in",
       literal: "true false",
       built_in: "print_string panic assert"
     },
