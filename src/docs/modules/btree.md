@@ -5,6 +5,7 @@ Every btree is either a Node that contains a value and two children (Node or Nil
 type t = fn I => Node of I * t * t | Nil of std:unit
 ```
 ## Functions
+---
 ### Nil: `std:unit -> (btree '0)`
 The constructor for a Nil btree.
 This is used to represent an empty child.
@@ -12,6 +13,7 @@ This is used to represent an empty child.
 ```halcyon
 let my_empty_tree = btree:Nil()
 ```
+---
 ### Node: `'0 * btree '0 * btree '0 -> btree '0`
 The constructor for a Node btree.
 #### Example
@@ -22,8 +24,10 @@ let my_tree = btree:Node (1, btree:Nil(), btree:Nil())
             nil nil
 *)
 ```
+---
 ### insert: `'0 -> ('0 -> '0 -> std:boolean) -> (btree '0) -> (btree '0)`
 Returns a copy of the passed tree with the passed value inserted according to the passed operation.
+#### Notes
 `insert` checks if the function is true with the passed value and the current tree value, if it is, it will attempt to insert the passed value as the left child. Otherwise, it will attempt to insert the passed value as the right child. This process is repeateded recursively until a `Node` has a `Nil` child in the appropriate position.
 #### Example
 ```halcyon
@@ -47,6 +51,7 @@ let my_newest_tree = btree:insert 9 (fn a b => a < b) my_newer_tree
 *                        9
 *)
 ```
+---
 ### iterate_tree_df: `('0 -> std:unit) -> (btree '0) -> std:unit`
 Runs the passed function on each element in the tree depth-first, then returns unit.
 #### Example
@@ -63,6 +68,7 @@ let () = btree:iterate_tree_df (fn a => string:from_int |> std:print_string) my_
 (* prints 123578 *)
 
 ```
+---
 ### iterate_tree_bf: `('0 -> std:unit) -> (btree '0) -> std:unit`
 Runs the passed function on each element in the tree breadth-first, then returns unit.
 #### Example
@@ -78,6 +84,7 @@ let () = btree:iterate_tree_bf (fn a => string:from_int |> std:print_string) my_
 *)
 (* prints 521378 *)
 ```
+---
 ### map_tree: `('0 -> '1) -> (btree '0) -> (btree '1)`
 Returns a copy of the passed tree with the passed function applied to each element.
 #### Examples
