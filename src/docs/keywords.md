@@ -41,7 +41,6 @@ end
 `match` and `with` are used for pattern matching, which compares a value (called the discriminant) with some patterns. 
 The branch of the first pattern that is matched (from top to bottom) will be taken.
 While pattern matching, underscores `_` and identifiers match any value.
-Additionally, 
 The form for pattern matching can be seen in the following example.
 ### Example
 ```halcyon
