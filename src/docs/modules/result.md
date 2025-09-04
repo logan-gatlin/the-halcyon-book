@@ -1,5 +1,5 @@
 # result
-Result is a type that represents either success (Ok) or failure (Error).
+`result` is a type that represents either success (Ok) or failure (Error).
 Every result is either an Ok or an Error, both of which contain a value.
 ```halcyon
 type result = fn a b => Ok of a | Error of b

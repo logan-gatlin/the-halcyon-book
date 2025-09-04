@@ -8,7 +8,7 @@ Returns the length of the passed string.
 let my_int = string:length "Hello"
 (* my_int == 5 *)
 ```
-### concatenate: `std:strin -> std:string -> std:string`
+### concatenate: `std:string -> std:string -> std:string`
 Adds the second string to the end of the first.
 #### Example
 ```halcyon

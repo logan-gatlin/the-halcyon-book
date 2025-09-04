@@ -1,5 +1,5 @@
 # btree
-btree is a type that represents a binary tree.
+`btree` is a type that represents a binary tree.
 Every btree is either a Node that contains a value and two children (Node or Nil), or it is Nil and contans no values.
 ```halcyon
 type t = fn I => Node of I * t * t | Nil of std:unit

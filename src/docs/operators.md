@@ -1,32 +1,30 @@
 # Operators
 The following is the full list of operators in Halcyon, in order of their precedence:
-- unary - and -. (arithmetic negation)
-- unary not (logical negation)
-- \* and *. (multiplication)
-- / and /. (division)
-- % (modulus)
-- \+ and +. (addition)
-- \- and -. (subtraction)
-- xor (logical XOR)
-- or (logical OR)
-- |> (function composition)
-- ==, !=, <=, >=, < > (comparison)
-- and (logical AND)
-- ;  
+| Symbol | Operation |
+|--------|-----------|
+|unary - and -.| arithmetic negation |
+|unary not | logical negation |
+|\* and *. | multiplication |
+|/ and /. | division |
+|% | modulus |
+|\+ and +. | addition|
+|\- and -. | subtraction |
+|xor | logical XOR |
+|or | logical OR |
+|\|> | function composition |
+|==, !=, <=, >=, < > | comparison |
+|and | logical AND |
+| ; | continue |
 
 ## Integer and Real Operators
 To make the type system simpler and type inference more effective, reals and integers have a different set of operators.  
-The following operators only work on reals:
-- \+.
-- \-.
-- \*.
-- /.  
-
-Likewise,the following operators only work on integers
-- \+
-- \-
-- \*
-- %  
+| Integers | Reals |
+|----------|-------|
+| \+       |\+.    |
+| \-       |\-.    |
+| \*       |\*.    |
+| /        |/.     |
+| %        |       |
 ## The ; Operator
 The ; operator discards whatever value is to the left of it. 
 This is useful for chaining together function calls when you don't care about their return values, like the print function.
