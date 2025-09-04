@@ -24,7 +24,7 @@ Creates a copy of the passed list with the passed element appended to the end.
 ```halcyon
 let my_list = list:Nil ()
 (* my_list: Nil *)
-let my_new_list = list:append "item" my_list 
+let my_new_list = list:push "item" my_list 
 (* my_new_list: "item" > Nil *)
 ```
 ### iterate: `('0 -> std:unit) -> (list '0) -> std:unit`
