@@ -120,8 +120,9 @@ module TypeAliasDemo =
       * in the std module *)
     type MyThreeIntegers = MyInt * MyInt * MyInt
 
-    (* sum type *)
+    (* sum types *)
     type list = fn I => Pair of I * (list I) | Nil of std:unit
+    type Class = Knight of std:unit | Rogue of std:unit | Priest of std:unit
 end
 ```
 ## of
