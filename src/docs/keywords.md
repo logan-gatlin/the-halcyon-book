@@ -1,7 +1,8 @@
 # Keywords
+---
 ## module, end   
 All halcyon programs must be wrapped in a module by using `module [name] =`.
-All modules, and therefore halcyon programs, must end with `end`
+All modules, and therefore halcyon programs, must end with `end`.
 Module declarations can be broken up into multiple sections.
 ### Example 
 ```halcyon
@@ -18,7 +19,9 @@ module demo2 =
     (* list2 == 5 > nil *)
 end
 ```
+---
 ## import 
+---
 ## let  
 `let` is used to declare constants and functions.
 ### Notes
@@ -29,6 +32,7 @@ let my_constant = 2
 let my_function = fn a => a + 1
 let my_new_constant = my_function 2
 ```
+---
 ## if, then, else  
 `if`, `then`, and `else` are used for conditional statements.
 In Halcyon, `if` and `else` are expressions, since they produce a value.
@@ -47,6 +51,7 @@ module Demo =
     (* Produces 0 *)
 end
 ```
+---
 ## match, with  
 `match` and `with` are used for pattern matching, which compares a value (called the discriminant) with one or more patterns. 
 ### Notes
@@ -100,11 +105,13 @@ module MatchDemo =
     let function = fn with 
     | true => string::print "Yep!"
     | false => string::print "Nope!"
-    (* single paramter function using with *)
+    (* single parameter function using with *)
 end
 ```
+---
 ## fn
 `fn` is used to declare functions.
+### Notes
 Since the halcyon compiler uses currying to reduce functions to a single parameter, functions like `add1` in the following example can be created and used.
 ### Example
 ```halcyon
@@ -122,6 +129,7 @@ module FunctionExample =
     (* Produces -9 *)
 end
 ```
+---
 ## type
 `type` is used to declare new types. 
 Types can be aliases for other types or sum types.
@@ -143,6 +151,7 @@ module TypeAliasDemo =
     
 end
 ```
+---
 ## of
 `of` is a keyword used to denote the type(s) that a constructor name contains.
 It is used when declaring new types to specify what a constructor is composed of, as in Example 1.
@@ -157,6 +166,7 @@ let print_list_item = fn list => match list with
     | Pair of (head, tail) => string::print head (* the head constructor contains an I and a t I, 'of' lets us access the I *)
     | Nil of () -> () (* do nothing *)
 ```
+---
 ## in 
 `in` is a scope modifier keyword used in the body of function declarations. 
 It is used when you need to declare a local constant or function that you only need to access within another function.
@@ -201,3 +211,4 @@ let thing = digit_to_string 5 (* this is a compile error: out of scope *)
       let right = filter (fn operand => operand != pivot) b in (* in 2 *)
       quicksort op right |> list::concatenate middle |> list::concatenate (quicksort op a) (* using local constants *)
 ```
+---
