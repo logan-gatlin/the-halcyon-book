@@ -10,25 +10,26 @@ type result = fn a b => Ok of a | Error of b
 Constructor for an Ok result.
 #### Example
 ```halcyon
-let my_OK = result:Ok (2)
+let my_OK = result::Ok (2)
 ```
 ---
 ### Error: `'1 -> (result '0 '1)`
 Constructor for an Error result.
 #### Example
 ```halcyon
-let my_Error = result:Error (2)
+let my_Error = result::Error (2)
 ```
 ---
 ### is_ok: `(result '0 '1) -> boolean`
 Returns true if the passed result is Ok, otherwise returns false.
 #### Example
 ```halcyon
-let my_result = result:Ok (2)
-if result:is_ok my_result then
-    std:print_string "Ok!"
+let my_result = result::Ok (2)
+let () = 
+if result::is_ok my_result then
+    string::print "Ok!"
 else
-    std:print_string "Error!"
+    string::print "Error!"
 
 (* prints "Ok!" *)
 ```
@@ -37,11 +38,12 @@ else
 Returns true if the passed result is Error, otherwise returns false.
 #### Example 
 ```halcyon
-let my_result = result:Error (2)
+let my_result = result::Error (2)
+let () = 
 if result:is_err my_result then
-    std:print_string "Error!"
+    string::print "Error!"
 else
-    std:print_string "Ok!"
+    string::print "Ok!"
 
 (* prints "Error!" *)
 ```
@@ -53,8 +55,8 @@ Panics if the result is Error.
 It is recommended that you use pattern matching in most cases instead of this.
 #### Example
 ```halcyon
-let my_result = result:Ok ("Hatsune Miku")
-let () = my_result |> result:unwrap_ok |> std:print_string
+let my_result = result::Ok ("Hatsune Miku")
+let () = my_result |> result::unwrap_ok |> string::print
 
 (* prints "Hatsune Miku" *)
 ```
@@ -66,8 +68,8 @@ Panics if the result is Ok.
 It is recommended that you use pattern matching in most cases instead of this.
 #### Example
 ```halcyon
-let my_result = result:Error ("Kasane Teto")
-let () = my_result |> result:unwrap_err |> std:print_string
+let my_result = result::Error ("Kasane Teto")
+let () = my_result |> result::unwrap_err |> string::print
 
 (* prints "Kasane Teto" *)
 ```
@@ -77,16 +79,16 @@ If the first result passed is Ok, returns the second one.
 Otherwise, return the first result, which is an Error.
 #### Example
 ```halcyon
-let my_result = result:Ok ("Akita Neru") |> resukt:res_and Error("Hatsune Miku") 
-match my_result with
-| result:Ok of a => std:print_string a
-| result:Error of b => std:print_string b
+let my_result = result::Ok ("Akita Neru") |> result::res_and Error("Hatsune Miku") 
+let () = match my_result with
+| result:Ok of a => string::print a
+| result:Error of b => string::print b
 (* prints "Hatsune Miku" *)
 
-let new_result = result:Error ("Kasane Teto") |> result:res_and Error("Hatsune Miku")
-match new_result with
-| result:Ok of a => std:print_string a
-| result:Error of b => std:print_string b
+let new_result = result::Error ("Kasane Teto") |> result::res_and Error("Hatsune Miku")
+let () = match new_result with
+| result::Ok of a => string::print a
+| result::Error of b => std::print b
 (* prints "Kasane Teto" *)
 ```
 ---
@@ -95,10 +97,10 @@ Returns the enclosed result value if the passed result is Ok.
 If the passed result is an Error, prints the passed string, then panics.
 #### Example
 ```halcyon
-let () = result:Ok ("Akita Neru") |> result:expect ("Try doing it right next time") |> std:print_string 
+let () = result::Ok ("Akita Neru") |> result::expect ("Try doing it right next time") |> string::print 
 (* prints "Akita Neru" *)
 
-let () = result:Error ("Akita Neru") |> result:expect ("Try doing it right next time") |> std:print_string 
+let () = result::Error ("Akita Neru") |> result::expect ("Try doing it right next time") |> string::print 
 (* prints "Try doing it right next time", then panics *)
 ```
 ---
@@ -106,13 +108,13 @@ let () = result:Error ("Akita Neru") |> result:expect ("Try doing it right next 
 Returns the first passed result if it is Ok, otherwise returns the second passed result.
 #### Example
 ```halcyon
-let () = result:Ok ("Akita Neru") |> result:res_or Error ("Kasane Teto") |> result:unwrap_ok |> std:print_string 
+let () = result::Ok ("Akita Neru") |> result::res_or Error ("Kasane Teto") |> result::unwrap_ok |> string::print 
 (* prints "Akita Neru" *)
 
-let () = result:Error ("Akita Neru") |> result:res_or Error ("Kasane Teto") |> result:unwrap_err |> std:print_string 
+let () = result::Error ("Akita Neru") |> result::res_or Error ("Kasane Teto") |> result::unwrap_err |> string::print
 (* prints "Kasane Teto" *)
 
-let () = result:Error ("Akita Neru") |> result:res_or Ok ("Kasane Teto") |> result:unwrap_ok |> std:print_string 
+let () = result::Error ("Akita Neru") |> result::res_or Ok ("Kasane Teto") |> result::unwrap_ok |> string::print
 (* prints "Kasane Teto" *)
 ```
 ---
@@ -120,10 +122,10 @@ let () = result:Error ("Akita Neru") |> result:res_or Ok ("Kasane Teto") |> resu
 Returns the value enclosed in the first passed result if its Ok, otherwise return the second passed value.
 #### Example
 ```halcyon
-let () = result:Ok ("Hatsune Miku") |> result:unwrap_or "Kasane Teto" |> std:print_string 
+let () = result::Ok ("Hatsune Miku") |> result::unwrap_or "Kasane Teto" |> string::print 
 (* prints "Hatsune Miku" *)
 
-let () = result:Error ("Hatsune Miku") |> result:unwrap_or "Kasane Teto" |> std:print_string 
+let () = result::Error ("Hatsune Miku") |> result::unwrap_or "Kasane Teto" |> string::print 
 (* prints "Kasane Teto" *)
 ```
 ---
@@ -132,9 +134,9 @@ If the passed result is Ok, returns a new result with an enclosed value equal to
 Otherwise, returns the passed Error.
 #### Example
 ```halcyon
-let () = result:Ok ("Kasane Teto") |> result:and_then (fn a => string:concatenate a " is my favorite") |> result:unwrap_ok |> std:print_string
+let () = result::Ok ("Kasane Teto") |> result::and_then (fn a => string:concatenate a " is my favorite") |> result::unwrap_ok |> string::print
 (* prints "Kasane Teto is my favorite" *)
 
-let () = result:Error ("Kasane Teto") |> result:and_then (fn a => string:concatenate a " is my favorite") |> result:unwrap_err |> std:print_string
+let () = result::Error ("Kasane Teto") |> result::and_then (fn a => string:concatenate a " is my favorite") |> result::unwrap_err |> string::print
 (* prints "Kasane Teto" *)
 ```

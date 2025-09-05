@@ -1,17 +1,27 @@
 # Keywords
-## module, end, import   
+## module, end   
 All halcyon programs must be wrapped in a module by using `module [name] =`.
-Modules are containers that allow you to reference sections of code and selectively access them using `import`.
 All modules, and therefore halcyon programs, must end with `end`
+Module declarations can be broken up into multiple sections.
 ### Example 
 ```halcyon
 module demo =
-    import list
-    let my_list = list:Nil () (* access imported modules using ':' *)
+    let my_list = list::Nil () (* access specific modules using '::' *)
+end
+module demo = 
+    let my_other_list = demo::my_list |> list::push 5
+end
+module demo2 = 
+    let list1 = demo::my_list
+    let list2 = demo::my_other_list
+    (* list1 == nil *)
+    (* list2 == 5 > nil *)
 end
 ```
+## import 
 ## let  
 `let` is used to declare constants and functions.
+### Notes
 Let expressions can contain patterns, but only if the pattern is 'irrefutable', or always matched for any member of the type.
 ### Example
 ```halcyon
@@ -38,10 +48,11 @@ module Demo =
 end
 ```
 ## match, with  
-`match` and `with` are used for pattern matching, which compares a value (called the discriminant) with some patterns. 
+`match` and `with` are used for pattern matching, which compares a value (called the discriminant) with one or more patterns. 
+### Notes
 The branch of the first pattern that is matched (from top to bottom) will be taken.
 While pattern matching, underscores `_` and identifiers match any value.
-The form for pattern matching can be seen in the following example.
+`with` can be used without an accompanying `match` when declaring a function with a single parameter.
 ### Example
 ```halcyon
 module MatchDemo =
@@ -85,6 +96,11 @@ module MatchDemo =
         | 0.0 => false
         | 1.0 => true
     (* When no match is found, crash the program *)
+
+    let function = fn with 
+    | true => string::print "Yep!"
+    | false => string::print "Nope!"
+    (* single paramter function using with *)
 end
 ```
 ## fn
@@ -114,15 +130,17 @@ Types can be aliases for other types or sum types.
 module TypeAliasDemo =
     (* aliases *)
     import std
-    type MyInt = std:integer
-    type MyReal = std:real
+    type MyInt = std::integer
+    type MyReal = std::real
      (* We can give new names to the primitive types
       * in the std module *)
     type MyThreeIntegers = MyInt * MyInt * MyInt
 
-    (* sum types *)
-    type list = fn I => Pair of I * (list I) | Nil of std:unit
+    (* sum type *)
     type Class = Knight of std:unit | Rogue of std:unit | Priest of std:unit
+    (* parametric sum type *)
+    type list = fn I => Pair of I * (list I) | Nil of std:unit
+    
 end
 ```
 ## of
@@ -131,12 +149,12 @@ It is used when declaring new types to specify what a constructor is composed of
 `of` is also used when pattern matching to deconstruct types based on what they are composed of, as in Example 2. 
 ### Example 1
 ```halcyon
-type list = fn I => Pair of I * (list I) | Nil of std:unit
+type list = fn I => Pair of I * (list I) | Nil of std::unit
 ```
 ### Example 2
 ```halcyon
 let print_list_item = fn list => match list with
-    | Pair of (head, tail) => std:print_string head (* the head constructor contains an I and a t I, 'of' lets us access the I *)
+    | Pair of (head, tail) => string::print head (* the head constructor contains an I and a t I, 'of' lets us access the I *)
     | Nil of () -> () (* do nothing *)
 ```
 ## in 
@@ -166,20 +184,20 @@ let from_integer =
       | x => (x % 10)
         |> digit_to_string  (* <-- previously declared local function being used *)
         |> let a = from_integer (x / 10) in
-          concatenate a
+          string::concatenate a
 
 let thing = digit_to_string 5 (* this is a compile error: out of scope *)
 ```
 ### Example 2
 ```halcyon
- let quicksort = fn op list => match (list:length list) with
-  | 0 => list:Nil ()
+ let quicksort = fn op list => match (list::length list) with
+  | 0 => list::Nil ()
   | 1 => list
   | length =>
-    let pivot = (list:nth length/2 list |> opt:unwrap) in
+    let pivot = (list::nth length/2 list |> opt::unwrap) in
     match partition (op pivot) list with
     | (a,b) => 
       let middle = filter (fn operand => operand == pivot) b in (* in 1 *)
       let right = filter (fn operand => operand != pivot) b in (* in 2 *)
-      quicksort op right |> list:concatenate middle |> list:concatenate (quicksort op a) (* using local constants *)
+      quicksort op right |> list::concatenate middle |> list::concatenate (quicksort op a) (* using local constants *)
 ```

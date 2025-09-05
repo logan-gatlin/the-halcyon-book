@@ -16,6 +16,8 @@ The following is the full list of operators in Halcyon, in order of their preced
 |and | logical AND |
 | ; | continue |
 
+Operators can be used as functions, as in `let two = (+) 1 1` 
+
 ## Integer and Real Operators
 To make the type system simpler and type inference more effective, reals and integers have a different set of operators.  
 | Integers | Reals |
@@ -31,6 +33,7 @@ This is useful for chaining together function calls when you don't care about th
 ### Example
 ```halcyon
 let one = (); (); (); (); 1
+let also_one = (;) () 1`
 ```
 ## The |> Operator
 "|>" is the function composition operator. 

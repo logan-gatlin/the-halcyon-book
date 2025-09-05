@@ -2,7 +2,7 @@
 `btree` is a type that represents a binary tree.
 Every btree is either a Node that contains a value and two children (Node or Nil), or it is Nil and contans no values.
 ```halcyon
-type t = fn I => Node of I * t * t | Nil of std:unit
+type t = fn I => Node of I * (t I) * (t I) | Nil of std::unit
 ```
 ## Functions
 ---
@@ -11,14 +11,14 @@ The constructor for a Nil btree.
 This is used to represent an empty child.
 #### Example
 ```halcyon
-let my_empty_tree = btree:Nil()
+let my_empty_tree = btree::Nil()
 ```
 ---
 ### Node: `'0 * btree '0 * btree '0 -> btree '0`
 The constructor for a Node btree.
 #### Example
 ```halcyon
-let my_tree = btree:Node (1, btree:Nil(), btree:Nil())
+let my_tree = btree:Node (1, btree::Nil(), btree::Nil())
 (* my_tree ==  1
               / \
             nil nil
@@ -31,7 +31,7 @@ Returns a copy of the passed tree with the passed value inserted according to th
 `insert` checks if the function is true with the passed value and the current tree value, if it is, it will attempt to insert the passed value as the left child. Otherwise, it will attempt to insert the passed value as the right child. This process is repeateded recursively until a `Node` has a `Nil` child in the appropriate position.
 #### Example
 ```halcyon
-let my_tree = btree:Node (5, btree:Nil(), btree:Nil())
+let my_tree = btree:Node (5, btree::Nil(), btree::Nil())
 let my_new_tree = btree:insert 2 (fn a b => a < b) my_tree
 (* my_new_tree == 5
 *                / \
@@ -57,8 +57,8 @@ Runs the passed function on each element in the tree depth-first, then returns u
 #### Example
 ```halcyon
 let lt = fn a b => a < b  
-let my_tree = btree:Nil () |> 5 lt |> 2 lt |> 7 lt |> 8 lt |> 3 lt |> 1 lt
-let () = btree:iterate_tree_df (fn a => string:from_int |> std:print_string) my_tree
+let my_tree = btree::Nil () |> 5 lt |> 2 lt |> 7 lt |> 8 lt |> 3 lt |> 1 lt
+let () = btree::iterate_tree_df (fn a => string:from_int |> std:print_string) my_tree
 (* my_tree == 5
 *            / \
 *           2   7 
@@ -74,8 +74,8 @@ Runs the passed function on each element in the tree breadth-first, then returns
 #### Example
 ```halcyon
 let lt = fn a b => a < b  
-let my_tree = btree:Nil () |> 5 lt |> 2 lt |> 7 lt |> 8 lt |> 3 lt |> 1 lt
-let () = btree:iterate_tree_bf (fn a => string:from_int |> std:print_string) my_tree
+let my_tree = btree::Nil () |> 5 lt |> 2 lt |> 7 lt |> 8 lt |> 3 lt |> 1 lt
+let () = btree::iterate_tree_bf (fn a => string::from_int |> std::print_string) my_tree
 (* my_tree == 5
 *            / \
 *           2   7 
@@ -90,7 +90,7 @@ Returns a copy of the passed tree with the passed function applied to each eleme
 #### Examples
 ```halcyon
 let lt = fn a b => a < b  
-let my_tree = btree:Nil () |> 5 lt |> 2 lt |> 7 lt |> 8 lt |> 3 lt |> 1 lt
+let my_tree = btree::Nil () |> 5 lt |> 2 lt |> 7 lt |> 8 lt |> 3 lt |> 1 lt
 (* my_tree == 5
 *            / \
 *           2   7 

@@ -9,21 +9,21 @@ type t = fn T => Some of T | None of std:unit
 Constructor for a Some option.
 #### Example
 ```halcyon
-let my_some = opt:Some (12)
+let my_some = opt::Some (12)
 ```
 ---
 ### None: `std:unit -> (list '0)`
 Constructor for a None option.
 #### Example
 ```halcyon
-let my_none = opt:None ()
+let my_none = opt::None ()
 ```
 ---
 ### is_some: `(opt:t '0) -> std:boolean`
 Returns true if the passed option is Some, otherwise returns false.
 #### Example
 ```halcyon
-let value = opt:Some (12) |> opt:is_some 
+let value = opt::Some (12) |> opt::is_some 
 (* value is true *)
 ```
 ---
@@ -31,7 +31,7 @@ let value = opt:Some (12) |> opt:is_some
 Returns true if the passed option is None, otherwise false.
 #### Example
 ```halcyon
-let value = opt:None () |> opt:is_none 
+let value = opt::None () |> opt::is_none 
 (* value is true *)
 ```
 ---
@@ -39,9 +39,9 @@ let value = opt:None () |> opt:is_none
 If the passed option is a Some, returns the enclosed value, otherwise panics.
 #### Example
 ```halcyon
-let value = opt:Some (12) |> opt:unwrap
+let value = opt::Some (12) |> opt::unwrap
 (* value == 12 *)
-let other_value = opt:None () |> opt:unwrap
+let other_value = opt::None () |> opt::unwrap
 (* panics *)
 ```
 ---
@@ -50,8 +50,8 @@ If the passed option is a Some, returns a copy of the passed option with the pas
 Otherwise, returns None.
 #### Example
 ```halcyon
-let my_opt = opt:Some (2)
-let () = my_opt |> opt:map (fn a => a * 2) |> opt:unwrap |> string:from_integer |> std:print_string
+let my_opt = opt::Some (2)
+let () = my_opt |> opt::map (fn a => a * 2) |> opt::unwrap |> string::from_integer |> std::print_string
 (* prints 4 *) 
 ```
 ---
@@ -60,6 +60,6 @@ If the passed option is a Some, runs passed function on the passed option, then 
 Otherwise, returns unit.
 #### Example
 ```halcyon
-let () = opt:Some ("Teto") |> opt:iterate std:print_string
+let () = opt::Some ("Teto") |> opt::iterate std::print_string
 (* prints "Teto" *)
 ```
