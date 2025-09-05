@@ -33,7 +33,7 @@ This is useful for chaining together function calls when you don't care about th
 ### Example
 ```halcyon
 let one = (); (); (); (); 1
-let also_one = (;) () 1`
+let also_one = (;) () 1
 ```
 ## The |> Operator
 "|>" is the function composition operator. 
