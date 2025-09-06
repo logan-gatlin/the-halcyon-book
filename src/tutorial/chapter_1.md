@@ -1,4 +1,4 @@
-(Adapted from [lgatlin.dev](https://lgatlin.dev/halcyon/)
+(Adapted from [lgatlin.dev](https://lgatlin.dev/halcyon/))
 # Tutorial
 The goal of this tutorial is to teach the basics of Halcyon to programmers with a novice to intermediate level of experience. It will cover the basics of functional programming from an imperative perspective. Halcyon is heavily inspired by [O'Caml](https://ocaml.org/), so if you already know that language you can safely skip or skim this.
 
