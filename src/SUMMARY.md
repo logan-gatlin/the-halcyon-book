@@ -1,7 +1,7 @@
 # Summary
 
 # Tutorial
-- [Chapter 1](./tutorial/chapter_1.md)
+- [Tutorial](./tutorial/chapter_1.md)
 # Documentation
 - [Conventions](./docs/conventions.md)
 - [Keywords](./docs/keywords.md)

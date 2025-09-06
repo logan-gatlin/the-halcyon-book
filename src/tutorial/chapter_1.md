@@ -1,10 +1,11 @@
+(Adapted from [lgatlin.dev](https://lgatlin.dev/halcyon/)
 # Tutorial
-The goal of this tutorial is to teach the basics of Halcyon to programmers with a novice to intermediate level of experience. It will cover the basics of functional programming from an imperative perspective. Halcyon is heavily inspired by O'Caml, so if you already know that language you can safely skip or skim this.
+The goal of this tutorial is to teach the basics of Halcyon to programmers with a novice to intermediate level of experience. It will cover the basics of functional programming from an imperative perspective. Halcyon is heavily inspired by [O'Caml](https://ocaml.org/), so if you already know that language you can safely skip or skim this.
 
 Functional style program is very different from imperative programming in languages like C, Java, Python, etc. This tutorial will slowly build up to the more advanced topics, with the hope that it is digestible for programmers coming from these other languages.
 
 ## How to read this tutorial
-The best way to learn is by doing. Open the online compiler in another browser window and split screen it with this one. This compiler runs fully in your browser, and re-compiles the code as you type. The compiler is pretty fast so this isn't much of a problem, but many browsers tend to stall or even crash when running complicated programs like this. This is not something I can fix, so keep the compiler in its own window!
+The best way to learn is by doing. Open the [online compiler](https://lgatlin.dev/halcyon/compiler) in another browser window and split screen it with this one. This compiler runs fully in your browser, and re-compiles the code as you type. The compiler is pretty fast so this isn't much of a problem, but many browsers tend to stall or even crash when running complicated programs like this. This is not something I can fix, so keep the compiler in its own window!
 
 There WILL be compiler bugs, and some of them might crash the page or your browser. Crashing your program may also cause bad behavior. If the compiler stops responding for any reason, copy your current code and refresh the window.
 
@@ -240,8 +241,8 @@ With that introduction to syntax and basic functional programming done, lets sta
 ```halcyon
 module Demo =
     import std
-    let () = std:print_string "Hello World"
-    (* std:print_string returns unit, and
+    let () = string::print "Hello World"
+    (* string::print returns unit, and
      * this pattern lets us match it without
      * needing to create a named variable.
      * let () = ... is a very common pattern. *)
@@ -251,22 +252,20 @@ We finally have our Hello World program! I didn't make this the first example be
 
 The std module contains the primitive types, and a few helper functions:
 
-- std:print_string : string -> unit
-    - Prints a string to the screen
-- std:panic : unit -> '0
+- std::panic : unit -> '0
     - Crash the program intentionally. We will discuss '0 more later, but for now know it stands for a non-existent type, because this function will never actually return
-- std:assert : boolean -> unit
+- std::assert : boolean -> unit
     - Crash the program if the parameter is false, otherwise do nothing and return unit
 ```halcyon
 module StdDemo =
     import std
-    let () = "Hello World" |> std:print_string
-    let () = std:assert (1 + 1 == 2)
-    let one = if true then 1 else std:panic ()
+    let () = "Hello World" |> string::print
+    let () = std::assert (1 + 1 == 2)
+    let one = if true then 1 else std::panic ()
     (* Here, it looks like the branches of this if expression
      * have different types, `integer` vs `'0`, this usually is not
-     * allowed. However, because `std:panic` never actually returns,
-     * this is allowed. `std:panic` is the only function who's return
+     * allowed. However, because `std::panic` never actually returns,
+     * this is allowed. `std::panic` is the only function who's return
      * type can be coerced into any other type this way.
     *)
 end
@@ -276,8 +275,8 @@ As we start to build more complicated types, we need to start giving them names.
 ```halcyon
 module TypeAliasDemo =
     import std
-    type MyInt = std:integer
-    type MyReal = std:real
+    type MyInt = std::integer
+    type MyReal = std::real
      (* We can give new names to the primitive types
       * in the std module *)
     type MyThreeIntegers = MyInt * MyInt * MyInt
@@ -287,7 +286,7 @@ We can now declare our first sum type. As you might have guessed, sum types are 
 ```halcyon
 module SumTypeDemo =
     import std
-    type MaybeString = Some of std:string | None of std:unit
+    type MaybeString = Some of std::string | None of std::unit
     (* This sum type has two variants, Some and None.
      * When we create a sum type, the compiler automatically
      * generates constructor functions with the same name as
@@ -297,25 +296,25 @@ module SumTypeDemo =
     let NotAString = None () (* type : MaybeString *)
 
     let maybe_print = fn maybe => match maybe with
-        | Some of s => std:print_string s
-        | None of () => std:print_string "Didn't find anything..."
+        | Some of s => string::print s
+        | None of () => string::print "Didn't find anything..."
     (* Just like tuples, we can deconstruct sum types with
      * pattern matching. *)
-    (* type : MaybeString -> std:unit *)
+    (* type : MaybeString -> std::unit *)
 
     let () = maybe_print SomeString
     let () = maybe_print NotAString
 
-    type Class = Knight of std:unit 
-        | Rogue of std:unit 
-        | Priest of std:unit
+    type Class = Knight of std::unit 
+        | Rogue of std::unit 
+        | Priest of std::unit
     (* Sum types also work great as a replacement for enums *)
 
     let class_greeting = fn class => match class with
-        | Knight of () => std:print_string "I am a knight"
-        | Rogue of () => std:print_string "I am a rogue"
-        | Priest of () => std:print_string "I am a priest"
-    (* type : Class -> std:unit *)
+        | Knight of () => string::print "I am a knight"
+        | Rogue of () => string::print "I am a rogue"
+        | Priest of () => string::print "I am a priest"
+    (* type : Class -> std::unit *)
 
     let () = class_greeting (Knight ())
     let () = class_greeting (Rogue ())
@@ -328,13 +327,13 @@ Sum types are one of the few types allowed to be recursive. Lets see how we can 
 ```halcyon
 module LinkedListDemo =
     import std
-    type StringList = Pair of std:string * StringList 
-        | Nil of std:unit
+    type StringList = Pair of std::string * StringList 
+        | Nil of std::unit
 
     let push = fn item list => match list with
         | Pair of (head, tail) => Pair (head, push item tail)
         | Nil of () => Pair (item, Nil ())
-    (* type : std:string -> StringList -> StringList *)
+    (* type : std::string -> StringList -> StringList *)
     
     let strings = Nil ()
         |> push "one"
@@ -345,10 +344,10 @@ module LinkedListDemo =
     
     let print_string_list = fn list => match list with
         | Pair of (head, tail) => 
-            std:print_string head; 
+            string::print head; 
             print_string_list tail
         | Nil of () => ()
-    (* type : StringList -> std:unit *)
+    (* type : StringList -> std::unit *)
 
     let () = print_string_list strings
 end
@@ -393,7 +392,7 @@ The syntax for this is experimental and significantly different from how similar
 module ListDemo =
     import std
     type LinkedList = fn T =>
-        Pair of T * LinkedList | Nil of std:unit
+        Pair of T * LinkedList | Nil of std::unit
     
     let push = fn item list => match list with
         | Pair of (head, tail) => Pair (head, push item tail)
@@ -405,21 +404,21 @@ module ListDemo =
     let string_list = Nil ()
         |> push "Hello "
         |> push "World"
-    (* type : (LinkedList std:string) *)
+    (* type : (LinkedList std::string) *)
 
     let int_list = Nil ()
         |> push 1
         |> push 2
-    (* type : (LinkedList std:integer) *)
+    (* type : (LinkedList std::integer) *)
         
     let print_string_list = fn list => match list with
         | Pair of (head, tail) => 
-            std:print_string head; 
+            string::print head; 
             print_string_list tail
         | Nil of () => ()
     (* We can still define functions that only works on
      * specific types of lists *)
-    (* type : (LinkedList std:string) -> std:unit *)
+    (* type : (LinkedList std::string) -> std::unit *)
 
     let () = print_string_list string_list
 
@@ -428,7 +427,7 @@ module ListDemo =
 end
 ```
 ## Standard collections
-The standard library provides an implementation of the list and maybe types in the list and opt (short for optional) modules respectively. 
+The standard library provides an implementation of the list and maybe types in the list and opt (short for optional) modules respectively. You can view [the source code](https://git.lgatlin.dev/logan/Halcyon/src/branch/stable/lib/src/std_hc/stdlib.hc) to see how they were implemented. 
 
 - [std](../docs/modules/std.md)
 - [list](../docs/modules/list.md)
