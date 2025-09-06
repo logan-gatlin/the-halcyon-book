@@ -72,7 +72,7 @@ Halcyon has all of the operators you would expect, with a few caveats. Here is t
 - |> (function composition)
 - ==, !=, <=, >=, < > (comparison)
 - and (logical AND)
-- ;
+- ;    
 There are a couple standouts in this list, firstly +. -. *. /.. These operators only work on reals, while + - * / % only work on integers. This is a tradeoff to make the type system simpler and type inference more effective. The ; operator simply discards whatever value is to the left of it. This is useful for chaining together function calls when you don't care about their return values, like the print function. Function composition |> will be covered later.
 ```halcyon
 module OperatorExamples =
