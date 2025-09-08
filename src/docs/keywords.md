@@ -58,6 +58,7 @@ end
 The branch of the first pattern that is matched (from top to bottom) will be taken.
 While pattern matching, underscores `_` and identifiers match any value.
 `with` can be used without an accompanying `match` when declaring a function with a single parameter.
+Doing so adds an implicit extra parameter to the function, which gets matched in the match expression.
 ### Example
 ```halcyon
 module MatchDemo =
@@ -133,6 +134,8 @@ end
 ## type
 `type` is used to declare new types. 
 Types can be aliases for other types or sum types.
+### Notes
+Types can optionally have no data attached, which essentially recreates the behavior and use cases of an enum.
 ### Example 1
 ```halcyon
 module TypeAliasDemo =
@@ -146,6 +149,8 @@ module TypeAliasDemo =
 
     (* sum type *)
     type Class = Knight of std:unit | Rogue of std:unit | Priest of std:unit
+    (* the same sum type with no data *)
+    type BetterClass = Knight | Rogue | Priest
     (* parametric sum type *)
     type list = fn I => Pair of I * (list I) | Nil of std:unit
     

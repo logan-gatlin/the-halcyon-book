@@ -65,16 +65,26 @@ The boolean type is either `true` or `false`.
 ---
 ## Functions 
 ---
-### panic: `std:unit -> '0`
+### panic: `std::unit -> '0`
 Panic crashes the program intentionally.
 Since it returns `'0`, panic can be "returned" in any function without causing type issues.
 
 ---
-### assert: `std:boolean -> std:unit`
+### assert: `std::boolean -> std::unit`
 Crash the program if the parameter is false, otherwise do nothing and return unit.
-
+#### Variations `std::boolean -> std::boolean -> std::unit`
+Assert has several variations that have the same behavior.
+They crash if the condition is false, otherwise, they return unit.
+| Function | Condition |
+|----------|-----------|
+|assert_eq |Equal      |
+|assert_ne |Not Equal  |
+|assert_ge |Greater or Equal|
+|assert_le |Less or Equal|
+|assert_gt |Greater|
+|assert_lt |Less|
 ---
-### print_string: `std:string -> std:unit`
+### println: `std::string -> std::unit`
 Prints the passed string to the console.
-
----
+#### Notes
+`println` is an alias for `string::print`.
