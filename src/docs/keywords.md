@@ -152,11 +152,11 @@ Types can optionally have no data attached, which essentially recreates the beha
     type MyThreeIntegers = MyInt * MyInt * MyInt
 
     (* sum type *)
-    type Class = Knight of std:unit | Rogue of std:unit | Priest of std:unit
+    type Class = Knight of std::unit | Rogue of std::unit | Priest of std::unit
     (* the same sum type with no data *)
     type BetterClass = Knight | Rogue | Priest
     (* parametric sum type *)
-    type list = fn I => Pair of I * (list I) | Nil of std:unit
+    type list = fn I => Pair of I * (list I) | Nil of std::unit
 # end
 ```
 ---
