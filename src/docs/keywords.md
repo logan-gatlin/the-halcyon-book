@@ -144,7 +144,6 @@ Types can optionally have no data attached, which essentially recreates the beha
 ```halcyon
 # module TypeAliasDemo =
     (* aliases *)
-    import std
     type MyInt = std::integer
     type MyReal = std::real
      (* We can give new names to the primitive types
