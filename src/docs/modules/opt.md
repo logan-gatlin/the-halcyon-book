@@ -9,40 +9,50 @@ type t = fn T => Some of T | None of std:unit
 Constructor for a Some option.
 #### Example
 ```halcyon
-let my_some = opt::Some (12)
+# module demo = 
+    let my_some = opt::Some (12)
+# end
 ```
 ---
 ### None: `std::unit -> (opt::t '0)`
 Constructor for a None option.
 #### Example
 ```halcyon
-let my_none = opt::None ()
+# module demo = 
+    let my_none = opt::None ()
+# end
 ```
 ---
 ### is_some: `(opt::t '0) -> std:boolean`
 Returns true if the passed option is Some, otherwise returns false.
 #### Example
 ```halcyon
-let value = opt::Some (12) |> opt::is_some 
-(* value is true *)
+# module demo = 
+    let value = opt::Some (12) |> opt::is_some 
+    (* value is true *)
+# end
 ```
 ---
 ### is_none: `(opt::t '0) -> std:boolean`
 Returns true if the passed option is None, otherwise false.
 #### Example
 ```halcyon
-let value = opt::None () |> opt::is_none 
-(* value is true *)
+# module demo = 
+    let value = opt::None () |> opt::is_none 
+    (* value is true *)
+# end
 ```
 ---
 ### unwrap: `(opt::t '0) -> '0`
 If the passed option is a Some, returns the enclosed value, otherwise panics.
 #### Example
 ```halcyon
-let value = opt::Some (12) |> opt::unwrap
-(* value == 12 *)
-let other_value = opt::None () |> opt::unwrap
-(* panics *)
+# module demo = 
+    let value = opt::Some (12) |> opt::unwrap
+    (* value == 12 *)
+    let other_value = opt::None () |> opt::unwrap
+    (* panics *)
+# end
 ```
 ---
 ### map: `('0 -> '1) -> (opt::t '0) -> (opt::t '1)`
@@ -50,9 +60,11 @@ If the passed option is a Some, returns a copy of the passed option with the pas
 Otherwise, returns None.
 #### Example
 ```halcyon
-let my_opt = opt::Some (2)
-let () = my_opt |> opt::map (fn a => a * 2) |> opt::unwrap |> string::from_integer |> std::print_string
-(* prints 4 *) 
+# module demo = 
+    let my_opt = opt::Some (2)
+    let () = my_opt |> opt::map (fn a => a * 2) |> opt::unwrap |> string::from_integer |> std::print_string
+    (* prints 4 *) 
+# end
 ```
 ---
 ### iterate: `('0 -> '1) -> (opt::t '0) -> std::unit`
@@ -60,6 +72,8 @@ If the passed option is a Some, runs passed function on the passed option, then 
 Otherwise, returns unit.
 #### Example
 ```halcyon
-let () = opt::Some ("Teto") |> opt::iterate std::print_string
-(* prints "Teto" *)
+# module demo = 
+    let () = opt::Some ("Teto") |> opt::iterate std::print_string
+    (* prints "Teto" *)
+# end
 ```

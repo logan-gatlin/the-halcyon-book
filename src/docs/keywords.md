@@ -28,9 +28,11 @@ end
 Let expressions can contain patterns, but only if the pattern is 'irrefutable', or always matched for any member of the type.
 ### Example
 ```halcyon
-let my_constant = 2
-let my_function = fn a => a + 1
-let my_new_constant = my_function 2
+# module demo = 
+    let my_constant = 2
+    let my_function = fn a => a + 1
+    let my_new_constant = my_function 2
+# end
 ```
 ---
 ## if, then, else  
@@ -40,7 +42,7 @@ In Halcyon, `if` and `else` are expressions, since they produce a value.
 Each branch must produce a value of the same type.
 ### Example
 ```halcyon
-module Demo =
+# module Demo =
     let safe_divide = fn numerator denominator =>
         if denominator != 0 then
             numerator / denominator
@@ -51,7 +53,7 @@ module Demo =
     (* Produces 2 *)
     let test2 = safe_divide 1 0 
     (* Produces 0 *)
-end
+# end
 ```
 ---
 ## match, with  
@@ -63,7 +65,7 @@ While pattern matching, underscores `_` and identifiers match any value.
 Doing so adds an implicit extra parameter to the function, which gets matched in the match expression.
 ### Example
 ```halcyon
-module MatchDemo =
+# module MatchDemo =
     let string_match = match "Hello World" with
         | "foobar" => 0
         | "barfoo" => 1
@@ -109,7 +111,7 @@ module MatchDemo =
     | true => string::print "Yep!"
     | false => string::print "Nope!"
     (* single parameter function using with *)
-end
+# end
 ```
 ---
 ## fn
@@ -118,7 +120,7 @@ end
 Since the halcyon compiler uses currying to reduce functions to a single parameter, functions like `add1` in the following example can be created and used.
 ### Example
 ```halcyon
-module FunctionExample = 
+# module FunctionExample = 
     let sum = fn a b => a + b
     let add1 = sum 1
 
@@ -130,7 +132,7 @@ module FunctionExample =
 
     let _ = add1 (-10)
     (* Produces -9 *)
-end
+# end
 ```
 ---
 ## type
@@ -140,7 +142,7 @@ Types can be aliases for other types or sum types.
 Types can optionally have no data attached, which essentially recreates the behavior and use cases of an enum.
 ### Example 1
 ```halcyon
-module TypeAliasDemo =
+# module TypeAliasDemo =
     (* aliases *)
     import std
     type MyInt = std::integer
@@ -155,8 +157,7 @@ module TypeAliasDemo =
     type BetterClass = Knight | Rogue | Priest
     (* parametric sum type *)
     type list = fn I => Pair of I * (list I) | Nil of std:unit
-    
-end
+# end
 ```
 ---
 ## of
@@ -165,13 +166,17 @@ It is used when declaring new types to specify what a constructor is composed of
 `of` is also used when pattern matching to deconstruct types based on what they are composed of, as in Example 2. 
 ### Example 1
 ```halcyon
-type list = fn I => Pair of I * (list I) | Nil of std::unit
+# module demo =
+    type list = fn I => Pair of I * (list I) | Nil of std::unit
+# end
 ```
 ### Example 2
 ```halcyon
+# module demo = 
 let print_list_item = fn list => match list with
     | Pair of (head, tail) => string::print head (* the head constructor contains an I and a t I, 'of' lets us access the I *)
     | Nil of () -> () (* do nothing *)
+# end
 ```
 ---
 ## in 
@@ -181,32 +186,35 @@ Example 1 shows `in` being used in the string module to declare a local function
 Example 2 shows `in` being used to declare multiple constants by chaining `in` statements together.
 ### Example 1
 ```halcyon
-let from_integer = 
-    fn x => 
-      let digit_to_string = fn x => match x with (* <-- local function declared within from_integer *)
-        | 0 => "0"
-        | 1 => "1"
-        | 2 => "2"
-        | 3 => "3"
-        | 4 => "4"
-        | 5 => "5"
-        | 6 => "6"
-        | 7 => "7"
-        | 8 => "8"
-        | 9 => "9"
-        | _ => "?"
-      in    (* <-- in *)
-    match x with
-      | 0 => ""
-      | x => (x % 10)
-        |> digit_to_string  (* <-- previously declared local function being used *)
-        |> let a = from_integer (x / 10) in
-          string::concatenate a
+# module demo = 
+    let from_integer = 
+        fn x => 
+        let digit_to_string = fn x => match x with (* <-- local function declared within from_integer *)
+            | 0 => "0"
+            | 1 => "1"
+            | 2 => "2"
+            | 3 => "3"
+            | 4 => "4"
+            | 5 => "5"
+            | 6 => "6"
+            | 7 => "7"
+            | 8 => "8"
+            | 9 => "9"
+            | _ => "?"
+        in    (* <-- in *)
+        match x with
+        | 0 => ""
+        | x => (x % 10)
+            |> digit_to_string  (* <-- previously declared local function being used *)
+            |> let a = from_integer (x / 10) in
+            string::concatenate a
 
-let thing = digit_to_string 5 (* this is a compile error: out of scope *)
+    let thing = digit_to_string 5 (* this is a compile error: out of scope *)
+# end
 ```
 ### Example 2
 ```halcyon
+# module demo = 
  let quicksort = fn op list => match (list::length list) with
   | 0 => list::Nil ()
   | 1 => list
@@ -217,5 +225,6 @@ let thing = digit_to_string 5 (* this is a compile error: out of scope *)
       let middle = filter (fn operand => operand == pivot) b in (* in 1 *)
       let right = filter (fn operand => operand != pivot) b in (* in 2 *)
       quicksort op right |> list::concatenate middle |> list::concatenate (quicksort op a) (* using local constants *)
+# end
 ```
 ---
