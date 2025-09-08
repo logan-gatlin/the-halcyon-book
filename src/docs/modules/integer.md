@@ -18,6 +18,7 @@ Returns the first passed integer to the power of the second passed integer.
 ```halcyon
 module demo =
     let four = integer::pow 2 2
+    let eight = integer::pow 2 3
 end
 ```
 ---
