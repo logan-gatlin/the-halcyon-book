@@ -35,7 +35,9 @@ let my_new_constant = my_function 2
 ---
 ## if, then, else  
 `if`, `then`, and `else` are used for conditional statements.
+### Notes
 In Halcyon, `if` and `else` are expressions, since they produce a value.
+Each branch must produce a value of the same type.
 ### Example
 ```halcyon
 module Demo =
