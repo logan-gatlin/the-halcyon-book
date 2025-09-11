@@ -2,7 +2,7 @@
 `list` is a type used to represent a linked list data structure.
 Every list is either Pair and contains two values (head, tail) or is Nil, and contains no values
 ```halcyon
-type t = fn I => Pair of I * (t I) | Nil of std:unit
+type t = fn I => (Pair of I, (t I)) | Nil of std:unit
 ```
 ## Functions
 ---

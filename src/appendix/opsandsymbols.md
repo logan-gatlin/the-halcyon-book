@@ -27,6 +27,7 @@ The following list contains all symbols that don’t function as operators; that
 |`ident : ()`|Alias for std::unit|
 |`(expr,)`|Single element tuple|
 |`(expr, ...)`|Tuple expression|
+|`(type,...)`|Tuple type|
 |`[type]`|Array type|
 |`[expr, ...]`|Array literal|
 |`ident::ident`|Module path|
