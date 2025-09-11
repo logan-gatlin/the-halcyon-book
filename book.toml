@@ -1,7 +1,24 @@
 [book]
-authors = ["Logan Gatlin, Logan Williams"]
+authors = ["Logan Gatlin", "Logan Williams"]
 language = "en"
 src = "src"
 title = "The Halcyon Book"
+
+[output.html]
+#additional-js = ["./assets/treesitter.js"]
+additional-css = ["./assets/mdbook-admonish.css"]
+default-theme = "ayu"
+preferred-dark-theme = "ayu"
+git-repository-url = "https://github.com/logan-gatlin/the-halcyon-book"
+git-repository-icon = "fa-github"
+
 [output.html.code.hidelines]
 halcyon = "#"
+
+#[preprocessor.treesitter]
+#command = "mdbook-treesitter"
+#languages = ["halcyon"]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.1.0" # do not edit: managed by `mdbook-admonish install`
