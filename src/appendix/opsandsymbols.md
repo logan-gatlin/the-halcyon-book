@@ -34,8 +34,9 @@ The following list contains all symbols that don’t function as operators; that
 |`pat \| pat`| Pattern alternatives|
 |`type \| type`| Sum type alternatives|
 |`pat => expr`| Part of match arm syntax|
-|`signature => expr`| Part of function syntax|
-|`_`| “Ignored” pattern binding |
-|`--`| Line comment|
-|`(*...*)`| Block Comment|    
+|`signature => expr`| art of function syntax|
+|`_`|Wildcard pattern match|
+|`_`|“Ignored” pattern binding|
+|`--`|Line comment|
+|`(*...*)`|Block Comment|    
 
