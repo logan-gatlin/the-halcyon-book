@@ -2,7 +2,7 @@
 The following is the full list of operators in Halcyon, in order of their precedence:
 | Symbol | Description |
 |--------|-----------|
-|(unary) `- -.`| arithmetic negation |
+|(unary) `-` `-.`| arithmetic negation |
 |(unary) `not` | logical negation |
 | `*` `*.` | multiplication |
 |`/` `/.`| division |

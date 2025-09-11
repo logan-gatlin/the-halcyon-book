@@ -19,3 +19,6 @@
     - [real](./standard_library/real.md)
 - [Examples]()
     - [FizzBuzz]()
+- [Appendix](./appendix/appendix.md)
+    - [A - Keywords](./appendix/keywords.md)
+    - [B - Operators and Symbols](./appendix/opsandsymbols.md)

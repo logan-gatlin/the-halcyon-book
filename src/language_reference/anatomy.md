@@ -16,7 +16,7 @@ Modules contain four kinds of statements:
 * `let` defines a variable
 * `do` executes an expression (like a `main` function)
 * `type` defines a new type, or type alias (described later)
-* `import` imports a function from another language, such as JavaScript of C
+* `import` imports a function from another language, such as JavaScript or C  
 Statements do not require whitespace or semicolons to separate them.
 
 A module acts as a namespace.
