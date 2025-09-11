@@ -2,7 +2,7 @@
 `btree` is a type that represents a binary tree.
 Every btree is either a Node that contains a value and two children (Node or Nil), or it is Nil and contans no values.
 ```halcyon
-type t = fn I => Node of I * (t I) * (t I) | Nil of std::unit
+type t = fn I => Node of I * (t I) * (t I) | Nil
 ```
 ## Functions
 ---

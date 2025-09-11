@@ -1,7 +1,7 @@
 # opt
 `opt` is a type that represents an optional value: every Option is either Some and contains a value, or None, and does not.
 ```halcyon
-type t = fn T => Some of T | None of std:unit
+type t = fn T => Some of T | None
 ```
 ## Functions 
 ---
