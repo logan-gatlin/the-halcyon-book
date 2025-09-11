@@ -5,7 +5,7 @@ src = "src"
 title = "The Halcyon Book"
 
 [output.html]
-#additional-js = ["./assets/treesitter.js"]
+additional-js = ["./assets/treesitter.js"]
 additional-css = ["./assets/mdbook-admonish.css"]
 default-theme = "ayu"
 preferred-dark-theme = "ayu"
@@ -15,9 +15,9 @@ git-repository-icon = "fa-github"
 [output.html.code.hidelines]
 halcyon = "#"
 
-#[preprocessor.treesitter]
-#command = "mdbook-treesitter"
-#languages = ["halcyon"]
+[preprocessor.treesitter]
+command = "mdbook-treesitter"
+languages = ["halcyon"]
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
