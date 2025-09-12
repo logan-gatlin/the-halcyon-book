@@ -8,7 +8,7 @@ The following is a list of keywords currently in use, with their functionality d
 |`import`| Imports a function from another language, such as JavaScript or C| 
 |`let`| Defines a variable|`let myint = 5`|
 |`do`| Executes an expression (like a `main` function)|`do string::print "Hi"`|
-|`type`| Defines a new type, or type alias|`type twoints = std::int * std::int`|
+|`type`| Defines a new type, or type alias|`type twoints = (std::int, std::int)`|
 |`match`, `with`| Matches a discriminant with one or more patterns| `match myint with \|4 => ... \|5 => ...`|
 |`if`,`then`,`else`| Evaluates to a value based on a boolean expression|`if myint == 5 then ... else ...`|
 |`fn`|Declares a function|`let myfn = fn a => a + 1`|

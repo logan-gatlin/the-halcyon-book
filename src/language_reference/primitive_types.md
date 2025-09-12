@@ -60,6 +60,7 @@ let numbers : [std::integer] = [1, 2, 3, 4]
 A tuple is a list of values that may be different types, and has a fixed length.
 To define a tuple, use parenthesis:
 ```halcyon
+let single_tuple = ("alone",)
 let grocery_list = ("eggs", "bacon", "milk")
 let favorite_numbers = (42, 2.718, '∞')
 let list_of_lists = (grocery_list, favorite_numbers)
