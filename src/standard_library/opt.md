@@ -14,7 +14,7 @@ Constructor for a Some option.
 # end
 ```
 ---
-### None: `std::unit -> (opt::t '0)`
+### None: `(opt::t '0)`
 Constructor for a None option.
 #### Example
 ```halcyon
@@ -23,7 +23,7 @@ Constructor for a None option.
 # end
 ```
 ---
-### is_some: `(opt::t '0) -> std:boolean`
+### is_some: `(opt::t '0) -> boolean`
 Returns true if the passed option is Some, otherwise returns false.
 #### Example
 ```halcyon
@@ -67,7 +67,7 @@ Otherwise, returns None.
 # end
 ```
 ---
-### iterate: `('0 -> '1) -> (opt::t '0) -> std::unit`
+### iterate: `('0 -> '1) -> (opt::t '0) -> ()`
 If the passed option is a Some, runs passed function on the passed option, then returns unit.
 Otherwise, returns unit.
 #### Example

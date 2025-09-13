@@ -2,42 +2,38 @@
 `format` is a module that provides functions for converting other types to strings.
 ## Functions
 ---
-### integer: `std::integer -> std::string`
+### integer: `integer -> string`
 Returns the passed integer as a string.
 #### Example
 ```halcyon
-# module demo =
-    let () = format::integer 5 |> string::print
-    (* prints "5" *)
-# end
+do format::integer 5
+    |> string::print
+(* prints "5" *)
 ```
 ---
-### real: `std::real -> std::string`
+### real: `real -> string`
 Returns the passed real as a string.
 #### Example
 ```halcyon
-# module demo =
-    let () = format::real 5.4 |> string::print
-    (* prints "5.4" *)
-# end
+do format::real 5.4
+    |> string::print
+(* prints "5.4" *)
 ```
 ---
-### boolean: `std::boolean -> std::string`
+### boolean: `boolean -> string`
 Returns the passed boolean as a string.
 #### Example
 ```halcyon
-# module demo =
-    let () = format::boolean true |> string::print
-    (* prints "true" *)
-# end
+do format::boolean true
+    |> string::print
+(* prints "true" *)
 ```
 ---
-### unit: `std::unit -> std::string`
+### unit: `unit -> string`
 Returns unit as a string.
 #### Example
 ```halcyon
-# module demo =
-    let () = format::unit () |> string::print
-    (* prints "()" *)
-# end
+do format::unit ()
+    |> string::print
+(* prints "()" *)
 ```

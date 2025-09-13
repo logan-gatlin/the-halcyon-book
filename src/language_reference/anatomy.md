@@ -7,7 +7,7 @@ Here is a Fizz Buzz program:
 
 ## Modules
 A Halcyon source file contains one or more modules.
-```
+```halcyon
 {{ #include ../../examples/fizzbuzz.hc:1 }}
 (* ... *)
 {{ #include ../../examples/fizzbuzz.hc:15 }}
@@ -17,7 +17,10 @@ Modules contain four kinds of statements:
 * `do` executes an expression (like a `main` function)
 * `type` defines a new type, or type alias (described later)
 * `import` imports a function from another language, such as JavaScript or C  
+
+```admonish note
 Statements do not require whitespace or semicolons to separate them.
+```
 
 A module acts as a namespace.
 To access a value or type from another module, the `::` symbol is used.

@@ -62,17 +62,16 @@ Similar to `void` in C.
 ### boolean
 The boolean type is either `true` or `false`.
 
----
 ## Functions 
 ---
-### panic: `std::unit -> '0`
+### panic: `() -> '0`
 Panic crashes the program intentionally.
 Since it returns `'0`, panic can be "returned" in any function without causing type issues.
 
 ---
-### assert: `std::boolean -> std::unit`
+### assert: `boolean -> ()`
 Crash the program if the parameter is false, otherwise do nothing and return unit.
-#### Variations `std::boolean -> std::boolean -> std::unit`
+#### Variations `boolean -> boolean -> ()`
 Assert has several variations that have the same behavior.
 They crash if the condition is false, otherwise, they return unit.
 | Function | Condition |
@@ -84,7 +83,5 @@ They crash if the condition is false, otherwise, they return unit.
 |assert_gt |Greater|
 |assert_lt |Less|
 ---
-### println: `std::string -> std::unit`
+### println: `string -> ()`
 Prints the passed string to the console.
-#### Notes
-`println` is an alias for `string::print`.
