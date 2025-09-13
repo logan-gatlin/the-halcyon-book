@@ -92,7 +92,7 @@ let () = match new_result with
 (* prints "Kasane Teto" *)
 ```
 ---
-### expect: `std::string -> (result::t '0 '1) -> '0`
+### expect: `string -> (result::t '0 '1) -> '0`
 Returns the enclosed result value if the passed result is Ok.
 If the passed result is an Error, prints the passed string, then panics.
 #### Example

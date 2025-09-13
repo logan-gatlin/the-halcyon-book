@@ -6,7 +6,7 @@ type t = fn I => (Node of I, (t I), (t I)) | Nil
 ```
 ## Functions
 ---
-### Nil: `std::unit -> (btree '0)`
+### Nil: ` unit -> (btree '0)`
 The constructor for a Nil btree.
 This is used to represent an empty child.
 #### Example
@@ -29,7 +29,7 @@ The constructor for a Node btree.
 # end
 ```
 ---
-### insert: `'0 -> ('0 -> '0 -> std::boolean) -> (btree '0) -> (btree '0)`
+### insert: `'0 -> ('0 -> '0 ->  boolean) -> (btree '0) -> (btree '0)`
 Returns a copy of the passed tree with the passed value inserted according to the passed operation.
 #### Notes
 `insert` checks if the function is true with the passed value and the current tree value, if it is, it will attempt to insert the passed value as the left child. Otherwise, it will attempt to insert the passed value as the right child. This process is repeateded recursively until a `Node` has a `Nil` child in the appropriate position.
@@ -58,7 +58,7 @@ Returns a copy of the passed tree with the passed value inserted according to th
 # end
 ```
 ---
-### iterate_tree_df: `('0 -> std::unit) -> (btree '0) -> std::unit`
+### iterate_tree_df: `('0 ->  unit) -> (btree '0) -> unit`
 Runs the passed function on each element in the tree depth-first, then returns unit.
 #### Example
 ```halcyon
@@ -76,7 +76,7 @@ Runs the passed function on each element in the tree depth-first, then returns u
 # end
 ```
 ---
-### iterate_tree_bf: `('0 -> std:unit) -> (btree '0) -> std:unit`
+### iterate_tree_bf: `('0 -> unit) -> (btree '0) -> unit`
 Runs the passed function on each element in the tree breadth-first, then returns unit.
 #### Example
 ```halcyon
