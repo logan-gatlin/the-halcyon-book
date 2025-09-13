@@ -32,10 +32,13 @@ The following list contains all symbols that don’t function as operators; that
 |`[expr, ...]`|Array literal|
 |`ident::ident`|Module path|
 |`ident = expr`|Assignment|
+|`{ident,...}`|Struct type|
+|`{expr,...}`|Struct literal|
+|`ident.ident`|Struct field access|
 |`pat \| pat`| Pattern alternatives|
 |`type \| type`| Sum type alternatives|
 |`pat => expr`| Part of match arm syntax|
-|`signature => expr`| art of function syntax|
+|`signature => expr`| Part of function syntax|
 |`_`|Wildcard pattern match|
 |`_`|“Ignored” pattern binding|
 |`--`|Line comment|
