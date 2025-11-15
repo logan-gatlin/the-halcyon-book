@@ -1,7 +1,4 @@
-- [Introduction](./getting_started/introduction.md)
-    - [Install](./getting_started/install.md)
-    - [IDE Setup](./getting_started/ide_setup.md)
-    - [Hello World](./getting_started/hello_world.md)
+- [Introduction](./introduction.md)
 - [Language Reference](./language_reference/index.md)
     - [Anatomy of a program](./language_reference/anatomy.md)
     - [Operator reference](./language_reference/operators.md)
