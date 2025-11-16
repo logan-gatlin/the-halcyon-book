@@ -2,7 +2,7 @@
 `string` is a module that provides functions for operating on strings
 ## Functions
 ---
-### print: `std::string -> std:unit`
+### print: `string -> std:unit`
 Prints the passed string to the console.
 #### Example 
 ```halcyon
@@ -12,7 +12,7 @@ Prints the passed string to the console.
 # end
 ```
 ---
-### length: `std::string -> std::integer`
+### length: `string -> integer`
 Returns the length of the passed string.
 #### Example
 ```halcyon
@@ -21,7 +21,7 @@ Returns the length of the passed string.
     (* my_int == 5 *)
 # end
 ```
-### concatenate: `std::string -> std::string -> std::string`
+### concatenate: `string -> string -> string`
 Adds the second string to the end of the first.
 #### Example
 ```halcyon

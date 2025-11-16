@@ -31,7 +31,7 @@ let my_new_list = list::push "item" my_list
 (* my_new_list: "item" > Nil *)
 ```
 ---
-### iterate: `('0 -> std::unit) -> (list::t '0) -> ()`
+### iterate: `('0 -> unit) -> (list::t '0) -> ()`
 Runs the passed operation on each element of the passed list, but doesn't create or return a new one.
 #### Example
 ```halcyon

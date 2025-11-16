@@ -2,7 +2,7 @@
 `integer` is a module that provides functions for operating on integers.
 ## Functions
 ---
-### abs: `std::integer -> std::integer`
+### abs: `integer -> integer`
 Returns the absolute value of the passed integer.
 #### Example
 ```halcyon
@@ -12,7 +12,7 @@ Returns the absolute value of the passed integer.
 # end
 ```
 ---
-### pow: `std::integer -> std::integer -> std::integer`
+### pow: `integer -> integer -> integer`
 Returns the first passed integer to the power of the second passed integer.
 #### Example
 ```halcyon
